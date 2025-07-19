@@ -1,3 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +18,43 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@layer utilities {
+  .animate-left {
+    animation: scrollLeft 45s linear infinite;
+  }
+
+  .animate-too {
+    animation: scrollLeft 60s linear infinite reverse;
+  }
+
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Override animation for small screens */
+  @media (max-width: 640px) {
+    .animate-left {
+      animation: scrollLeftMobile 60s linear infinite;
+    }
+
+    .animate-too {
+      animation: scrollLeftMobile 80s linear infinite reverse;
+    }
+
+    @keyframes scrollLeftMobile {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-410%);
+      }
+    }
+  }
 }
